@@ -1,0 +1,19 @@
+#include <stdio.h>
+int main() {
+    char text[100];
+    int k, i;
+    printf("Enter a message: ");
+    fgets(text, sizeof(text), stdin);
+    printf("Enter the key (1-25): ");
+    scanf("%d", &k);
+    for (i = 0; text[i] != '\0'; i++) {
+        if (text[i] >= 'A' && text[i] <= 'Z') {
+            text[i] = ((text[i] - 'A' + k) % 26) + 'A';
+        }
+        else if (text[i] >= 'a' && text[i] <= 'z') {
+            text[i] = ((text[i] - 'a' + k) % 26) + 'a';
+        }
+    }
+    printf("Encrypted message: %s", text);
+    return 0;
+}
